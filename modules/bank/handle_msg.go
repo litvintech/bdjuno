@@ -13,7 +13,7 @@ func (m *Module) HandleMsg(_ int, msg sdk.Msg, tx *types.Tx) error {
 	addresses, err := m.messageParser(m.cdc, msg)
 	if err != nil {
 		log.Error().Str("module", "bank").Str("operation", "refresh balances").
-			Err(err).Msgf("error while refreshing balances after message of type %s", msg.Type())
+			Err(err).Msgf("error while refreshing balances after message of type %s", msg.String())
 	}
 
 	return m.RefreshBalances(tx.Height, utils.FilterNonAccountAddresses(addresses))

@@ -20,7 +20,7 @@ func (m *Module) HandleMsg(_ int, msg sdk.Msg, tx *juno.Tx) error {
 
 	addresses, err := m.getAddresses(m.cdc, msg)
 	if err != nil {
-		return fmt.Errorf("error while getting accounts after message of type %s", msg.Type())
+		return fmt.Errorf("error while getting accounts after message of type %s", msg.String())
 	}
 
 	for _, address := range utils.FilterNonAccountAddresses(addresses) {
